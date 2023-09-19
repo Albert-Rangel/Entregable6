@@ -65,7 +65,6 @@ class CartManager {
           lastObjetid++
 
           cart2 = { 'id': parseInt(lastObjetid, 10), products: [] }
-          //cart2 = await Object.assign({ 'id': parseInt(lastObjetid, 10) }, ObjectCart)
 
           allCarts.push(cart2);
         }
@@ -106,7 +105,6 @@ class CartManager {
 
         if (objectCarts === undefined) return `E02|No encontramos carritos con el id ${parseInt(cid, 10)}.`;
 
-        // const allCarts = await this.readCarts();
 
         if (allCarts.length === 0) {
 
@@ -171,7 +169,6 @@ class CartManager {
     } catch (error) {
       return `ERR|Error generico. Descripcion :${error}`
     }
-
   }
 
 

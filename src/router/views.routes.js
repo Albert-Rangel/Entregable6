@@ -13,22 +13,19 @@ router.get("/realTimeProducts",  async (req, res) => {
 })
 
 router.get("/home", async (req, res) => {
+    console.log("lelgo al home")
     const allProducts =  await productManager.getProducts()
+    console.log("salio del al home")
+    console.log(allProducts)
+
+
     res.render("home", {
         title: "Cards Products",
         style: "home.css",
         Products : allProducts
-        //Products : {}
 
     })
 })
 
-// router.get("/chatView", async (req, res) => {
-//     res.render("chat", {
-//         title: "Chat",
-//         style: "chat.css",
-//         //Products : {}
-//     })
-// })
 
 export default router

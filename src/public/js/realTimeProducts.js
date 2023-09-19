@@ -1,7 +1,6 @@
 const socket = io()
 
 socket.on('AllProducts', (data) => {
-    console.log('el cliente escucho el llamado allproducts')//eliminar
     updateProductList(data);
 });
 
@@ -30,7 +29,6 @@ function updateProductList(products) {
         </div>`
 
     });
-    console.log('renderizo nada porque no vino objeto') //eliminar
 
     containerDiv.innerHTML = contenidocambiante
 }
@@ -38,7 +36,6 @@ function updateProductList(products) {
 let productForm = document.getElementById("formProduct");
 productForm.addEventListener('submit', (evt) => {
     evt.preventDefault()
-    console.log('Entro en el addEventListener') //eliminar
 
     let description = productForm.elements.description.value;
     let title = productForm.elements.title.value;
@@ -46,11 +43,8 @@ productForm.addEventListener('submit', (evt) => {
     let thumbnail = productForm.elements.thumbnail.value;
     let code = productForm.elements.code.value;
     let stock = productForm.elements.stock.value;
-    // let status = productForm.elements.status.value;
     var status = document.getElementById('status').checked;
     let category = productForm.elements.category.value;
-
-    console.log('Entro en el metodo de enviar el formulario en el clientside, emite sennewproduct y limpia form') //eliminar
 
     
     socket.emit('sendNewProduct', {

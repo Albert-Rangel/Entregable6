@@ -27,9 +27,7 @@ class CartManager {
 
       if (productObject == undefined) return `E02|El producto con el id ${pid} no se encuentra agregado.`;
 
-      // if (cartObject.products.some(prod => prod._id === pid)) {
       if (cartObject.products.find(prod => prod.pid === pid)) {
-
 
         let ProductinsideCart = cartObject.products.find(prod => prod.pid === pid)
 

@@ -63,7 +63,7 @@ ProductRoute.put('/:pid', async function (req, res) {
 })
 
 ProductRoute.delete('/:pid', async function (req, res) {
-    const pid = parseInt(req.params.pid, 10)
+    const pid = req.params.pid
     const answer = await productManager.deleteProduct(pid)
     const arrayAnswer = ManageAnswer(answer)
     return res.status(arrayAnswer[0]).send({

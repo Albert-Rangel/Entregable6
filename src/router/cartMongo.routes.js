@@ -6,9 +6,7 @@ const CartRoute = Router();
 
 
 CartRoute.get('/byId/:cid', async function (req, res) {
-    console.log("entro en el get porid")
     const cid = req.params.cid
-    console.log("llamare a getcardbyid")
 
     const cartObject = await cartManager.getCartById(cid);
     const isString = (value) => typeof value === 'string';
@@ -25,7 +23,6 @@ CartRoute.get('/byId/:cid', async function (req, res) {
 
 CartRoute.get('/', async function (req, res) {
     const limit = req.query.limit;
-    console.log('entro en el get')
     const cartObject = await cartManager.getCarts();
     const isString = (value) => typeof value === 'string';
     if (isString(cartObject)) {

@@ -5,22 +5,7 @@ class ProductManager {
   // La variable path se inicializara desde el constructor.
   constructor() {
   }
-  async validateParameters(product) {
-
-    if (typeof (product.price) !== "number" || product.price === null || typeof (product.stock) !== "number" || product.stock === null) {
-      return false;
-    }
-
-    if (typeof (product.title) !== "string" || !product.title || typeof (product.description) !== "string" || !product.description || typeof (product.code) !== "string" || !product.code || typeof (product.category) !== "string" || !product.category) {
-      return false
-    }
-
-    if (typeof (product.status) !== "boolean" || product.status === null) {
-      return false;
-    }
-
-    return true;
-  };
+  
 
   async addProduct(ObjectProduct) {
 
@@ -47,7 +32,7 @@ class ProductManager {
 
   async getProducts() {
     try {
-      const products = await productsModel.find();
+      const products = await productsModel.find().lean();
 
       return products;
 
@@ -71,13 +56,10 @@ class ProductManager {
 
   async updateProduct(pid, product) {
     try {
-      console.log('entro en el uodate product')
 
       const { title, description, price, thumbnail, code, stock, status, category } = product;
-      // if (!Number.isInteger(id)) return "E01|Solo numeros son aceptados como id, ingrese porfavor el id en el formato adecuado.";
 
       const found = await productsModel.find({ _id: pid });
-      console.log(found)
       if (found == undefined) return `E02|El producto con el id ${pid} no se encuentra agregado.`;
 
       for (const [key, value] of Object.entries(product)) {
@@ -107,7 +89,7 @@ class ProductManager {
   async deleteProduct(pid) {
     try {
 
-      const a = await productsModel.deleteOne({ _id: pid });
+      await productsModel.deleteOne({ _id: pid });
 
       return `SUC|El producto con el id ${pid} fue eliminado.`
     }

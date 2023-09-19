@@ -46,7 +46,6 @@ Socketserverio.on('connection', async (socket) => {
   Socketserverio.emit('AllProducts', productList)
 
   socket.on('sendNewProduct', async (newP) => {
-    console.log('Entro en el metodo sennewproduct en server sidem') //eliminar
 
     const newProduct = {
       description: newP.description,
@@ -61,9 +60,6 @@ Socketserverio.on('connection', async (socket) => {
     }
     await productManager.addProduct(newProduct);
     const productList = await productManager.getProducts();
-    // console.log(productList)
-    // console.log('no hice que llamara a basededatos, solo renderiza un objeto vacio de bd') //eliminar
-
     Socketserverio.emit('AllProducts', productList)
   })
 
@@ -76,7 +72,6 @@ Socketserverio.on('connection', async (socket) => {
   socket.on('message', async (data) => {
     await messagesModel.create(data)
     const messag = await messagesModel.find().lean()
-    console.log(messag)
     Socketserverio.emit('newMessage',messag)
   })
 
