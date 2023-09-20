@@ -31,7 +31,7 @@ const HTTPserver = app.listen(port, () =>
 );
 
 //Conetando con Atlas
-mongoose.connect('mongodb+srv://albertsleyther:<password>@ecommerce.6lrddnh.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://albertsleyther:09NbqGe9gecOLTBy@ecommerce.6lrddnh.mongodb.net/?retryWrites=true&w=majority');
 
 //Creacion del servidor con Socketio
 const Socketserverio = new Server(HTTPserver)
